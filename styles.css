@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(45deg, #0085ff, #ff1458);
+}
+
+.contenedor-juego {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.marcador {
+    position: absolute;
+    top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+}
+
+.jugador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.contador {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.turno {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 5px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
+.tablero {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 20px;
+}
+
+.tablero .caja {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-right: 4px solid #fff;
+    border-bottom: 4px solid #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tablero .caja:nth-child(3n) {
+    border-right: none;
+}
+
+.tablero .caja:nth-child(n+7) {
+    border-bottom: none;
+}
+
+.arrastrar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 330px;
+    width: 80px;
+    gap: 10px;
+    margin: 0 10px;
+}
+
+.arrastrar .cajaArrastre {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cruz {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+}
+
+.cruz::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background: #fff;
+    transform: rotate(45deg);
+}
+
+.cruz::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: #fff;
+    transform: rotate(45deg);
+}
+
+.circulo {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    cursor: grab;
+}
+
+.mensaje-ganador {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 100;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.mensaje-ganador h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.linea-ganadora {
+    height: 5px;
+    background: #fff;
+    margin: 10px 0;
+    display: none;
+}
+
+.boton-reiniciar {
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: all 0.3s;
+}
+
+.boton-reiniciar:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .contenedor-juego {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .arrastrar {
+        height: auto;
+        width: 100%;
+        flex-direction: row;
+    }
+    
+    .arrastrar .cajaArrastre {
+        flex-direction: row;
+    }
+    
+    .tablero .caja {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .marcador {
+        position: relative;
+        top: auto;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
